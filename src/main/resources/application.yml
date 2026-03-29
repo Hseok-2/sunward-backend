@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: local # 기본 실행 모드
+
+  application:
+    name: sunward-backend
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 1000
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB

@@ -1,0 +1,17 @@
+services:
+  sunward-backend:
+    image: sunward-backend:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DB_URL=${DB_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+    depends_on:
+      - sunward-db
+
+  sunward-db:
+    image: mysql:8.0
+    # ... MySQL 설정 ...

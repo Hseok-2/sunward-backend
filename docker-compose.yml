@@ -11,7 +11,22 @@ services:
       - ADMIN_EMAIL=${ADMIN_EMAIL}
     depends_on:
       - sunward-db
-
+  # MySQL 설정
   sunward-db:
     image: mysql:8.0
-    # ... MySQL 설정 ...
+    container_name: sunward-db
+    restart: always # 서버가 재부팅되어도 DB는 자동으로 다시 켜짐
+    environment:
+      MYSQL_DATABASE: sunward_db
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # 루트 비밀번호 주입
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - # 컨테이너가 삭제되어도 데이터는 서버 하드디스크에 남도록 연결
+      - ./mysql_data:/var/lib/mysql
+    command:
+      # 한글 깨짐 방지를 위한 캐릭터셋 설정
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci

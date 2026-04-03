@@ -1,4 +1,4 @@
-package sunward_backend.domain.member.entity;
+package sunward_backend.domain.admin.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

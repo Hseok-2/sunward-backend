@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @MappedSuperclass // 이 클래스를 상속받으면 아래 필드들도 컬럼으로 인식하게 합니다.
-@EntityListeners(AuditingEntityListener.class) // 데이터가 생성/수정될 때 시간을 자동으로 감지해서 넣어줌
+@EntityListeners(AuditingEntityListener.class) // 데이터가 생성, 수정될 때 시간을 자동으로 감지해서 넣어줌
 public abstract class BaseTimeEntity {
 
     @CreatedDate

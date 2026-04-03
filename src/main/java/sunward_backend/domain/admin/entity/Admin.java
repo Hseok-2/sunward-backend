@@ -1,4 +1,4 @@
-package sunward_backend.domain.member.entity;
+package sunward_backend.domain.admin.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -9,9 +9,9 @@ import sunward_backend.global.common.BaseTimeEntity;
 
 @Entity
 @Getter
-@Table(name = "member")
+@Table(name = "admin")
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // 기본 생성자 막기
-public class Member extends BaseTimeEntity {
+public class Admin extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Member extends BaseTimeEntity {
     private String refreshToken;
 
     @Builder
-    public Member(String username, String password, String email, Role role) {
+    public Admin(String username, String password, String email, Role role) {
         this.username = username;
         this.password = password;
         this.email = email;

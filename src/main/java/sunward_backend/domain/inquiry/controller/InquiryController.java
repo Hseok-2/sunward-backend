@@ -1,5 +1,6 @@
 package sunward_backend.domain.inquiry.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ public class InquiryController {
 
     private final InquiryService inquiryService;
 
+    @Operation(summary = "견적 문의 생성")
     @PostMapping
     public ResponseEntity<Void> createInquiry(@RequestBody InquiryRequest request) {
         inquiryService.createInquiry(request);
@@ -23,6 +25,7 @@ public class InquiryController {
     }
 
     // 문의글 조회 - 관리자
+    @Operation(summary = "견적 문의 조회")
     @GetMapping
     public ResponseEntity<Page<InquiryResponse>> getInquiries(
             @RequestParam(defaultValue = "0") int page
@@ -32,6 +35,7 @@ public class InquiryController {
     }
 
     // 문의글 상태 변경 - 관리자
+    @Operation(summary = "견적 문의 상태 변경")
     @PatchMapping("/{id}/status")
     public ResponseEntity<Void> updateInquiryStatus(
             @PathVariable Long id,

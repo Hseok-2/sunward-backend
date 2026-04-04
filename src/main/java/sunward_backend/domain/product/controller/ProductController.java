@@ -1,5 +1,6 @@
 package sunward_backend.domain.product.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     // 제품 조회(페이징)
+    @Operation(summary = "해당 카테고리 제품 조회")
     @GetMapping
     public ResponseEntity<Page<ProductResponse>> getProducts(
             @RequestParam Long categoryId,
@@ -27,6 +29,7 @@ public class ProductController {
     }
 
     // 제품 등록 - 관리자
+    @Operation(summary = "제품 등록")
     @PostMapping
     public ResponseEntity<Void> createProduct(@RequestBody ProductRequest request) {
         productService.createProduct(request);
@@ -34,6 +37,7 @@ public class ProductController {
     }
 
     // 제품 수정 - 관리자
+    @Operation(summary = "제품 수정")
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateProduct(@PathVariable Long id, @RequestBody ProductRequest request) {
         productService.updateProduct(id, request);
@@ -41,6 +45,7 @@ public class ProductController {
     }
 
     // 제품 삭제 - 관리자
+    @Operation(summary = "제품 삭제")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);

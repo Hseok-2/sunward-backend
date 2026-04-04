@@ -1,5 +1,6 @@
 package sunward_backend.domain.admin.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ public class AdminController {
 
     private final AdminService adminService;
 
+    @Operation(summary = "관리자 로그인")
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         LoginResponse response = adminService.login(request);

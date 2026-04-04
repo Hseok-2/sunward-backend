@@ -26,21 +26,21 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    // 제품 등록
+    // 제품 등록 - 관리자
     @PostMapping
     public ResponseEntity<Void> createProduct(@RequestBody ProductRequest request) {
         productService.createProduct(request);
         return ResponseEntity.ok().build();
     }
 
-    // 제품 수정
+    // 제품 수정 - 관리자
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateProduct(@PathVariable Long id, @RequestBody ProductRequest request) {
         productService.updateProduct(id, request);
         return ResponseEntity.ok().build();
     }
 
-    // 제품 삭제
+    // 제품 삭제 - 관리자
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);

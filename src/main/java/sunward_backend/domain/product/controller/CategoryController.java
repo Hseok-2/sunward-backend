@@ -16,24 +16,28 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
+    // 카테고리 조회
     @GetMapping
     public ResponseEntity<List<CategoryResponse>> getCategories() {
         List<CategoryResponse> response = categoryService.getCategories();
         return ResponseEntity.ok(response);
     }
 
+    // 카테고리 등록 - 관리자
     @PostMapping
     public ResponseEntity<Void> createCategory(@RequestBody CategoryRequest request) {
         categoryService.createCategory(request);
         return ResponseEntity.ok().build();
     }
 
+    // 카테고리 수정 - 관리자
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateCategory(@PathVariable Long id, @RequestBody CategoryRequest request) {
         categoryService.updateCategory(id, request);
         return ResponseEntity.ok().build();
     }
 
+    // 카테고리 삭제 - 관리자
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);

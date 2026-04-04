@@ -1,7 +1,6 @@
 package sunward_backend.domain.inquiry.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +31,7 @@ public class InquiryController {
         return ResponseEntity.ok(response);
     }
 
-    // 문의글 상태 변경
+    // 문의글 상태 변경 - 관리자
     @PatchMapping("/{id}/status")
     public ResponseEntity<Void> updateInquiryStatus(
             @PathVariable Long id,

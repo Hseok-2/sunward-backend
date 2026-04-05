@@ -14,7 +14,7 @@ public class NoticeResponse {
     private String title;
     private String content;
     private int viewCount;
-    private boolean isPinned;
+    private boolean pinned;
     private LocalDateTime createdAt;
 
     public NoticeResponse(Notice notice) {
@@ -22,7 +22,7 @@ public class NoticeResponse {
         this.title = notice.getTitle();
         this.content = notice.getContent();
         this.viewCount = notice.getViewCount();
-        this.isPinned = notice.isPinned();
+        this.pinned = notice.isPinned();
         this.createdAt = notice.getCreatedAt();
     }
 }

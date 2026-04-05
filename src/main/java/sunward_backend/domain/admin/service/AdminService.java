@@ -23,11 +23,11 @@ public class AdminService {
     public LoginResponse login(LoginRequest request) {
         // 회원 정보 조회
         Admin admin = adminRepository.findByUsername(request.getUsername())
-                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 아이디입니다."));
+                .orElseThrow(() -> new IllegalArgumentException("회원 정보가 일치하지 않습니다."));
 
         // 비밀번호 검증
         if (!passwordEncoder.matches(request.getPassword(), admin.getPassword())) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+            throw new IllegalArgumentException("회원 정보가 일치하지 않습니다.");
         }
 
         // 토큰 발급

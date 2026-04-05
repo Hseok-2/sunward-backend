@@ -27,20 +27,20 @@ public class Notice extends BaseTimeEntity {
     private int viewCount; // 초기 조회수는 0으로
 
     @Column(nullable = false)
-    private boolean isPinned; // 공지사항 상단 고정 여부 (true이면 [공지] 태그)
+    private boolean pinned; // 공지사항 상단 고정 여부 (true이면 [공지] 태그)
 
     @Builder
-    public Notice(String title, String content, boolean isPinned) {
+    public Notice(String title, String content, boolean pinned) {
         this.title = title;
         this.content = content;
-        this.isPinned = isPinned;
+        this.pinned = pinned;
     }
 
     // 공지사항 수정 메서드
-    public void updateNotice(String title, String content, boolean isPinned) {
+    public void updateNotice(String title, String content, boolean pinned) {
         this.title = title;
         this.content = content;
-        this.isPinned = isPinned;
+        this.pinned = pinned;
     }
 
     // 조회수 증가 메서드

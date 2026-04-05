@@ -22,7 +22,7 @@ public class NoticeService {
     public Page<NoticeResponse> getNotices(String keyWord, int page) {
         // 정렬 조건: 1순위 - 상단고정, 2순위 - 최신순
         Sort sort = Sort.by(
-                Sort.Order.desc("isPinned"),
+                Sort.Order.desc("pinned"),
                 Sort.Order.desc("createdAt")
         );
         PageRequest pageable = PageRequest.of(page, 10, sort);
@@ -53,7 +53,7 @@ public class NoticeService {
         Notice notice = Notice.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .isPinned(request.isPinned())
+                .pinned(request.isPinned())
                 .build();
         noticeRepository.save(notice);
     }
